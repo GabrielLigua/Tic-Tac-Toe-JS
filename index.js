@@ -126,7 +126,7 @@ function pedirPosicionJugada() {
 }
 
 // Controla el inicio del juego y la posiblidad de volver a jugar
-function iniciarTicTacToe() {
+function iniciarJuego() {
   let jugarDeNuevo = true;
 
   while (jugarDeNuevo) {
@@ -148,4 +148,4 @@ function iniciarTicTacToe() {
 }
 
  
-iniciarTicTacToe(); // Inicia el juego
+iniciarJuego(); // Inicia el juego
