@@ -1,10 +1,10 @@
-let jugadorActual = "X"; // jugador que inicia el juego
+let jugadorActual = "X"; // Jugador que inicia el juego
 
-let juegoActivo = true; // indica si el juego está activo
+let juegoActivo = true; // Indica si el juego está activo
 
 let tablero = []; // Arreglo que representa las 9 casillas del tablero
 
-// todas las combinaciones posibles para que haya un ganador
+// Todas las combinaciones posibles para que haya un ganador
 const COMBINACIONES_GANADORAS = [
   [0, 1, 2], //Fila
   [3, 4, 5], //Fila
@@ -16,7 +16,7 @@ const COMBINACIONES_GANADORAS = [
   [2, 4, 6], //Diagonal
 ];
 
-// imprime el tablero por consola
+// Imprime el tablero por consola
 function imprimirTablero() {
   console.clear();
   console.log(`\n--- TURNO DEL JUGADOR: ${jugadorActual} ---`);
@@ -30,7 +30,7 @@ function imprimirTablero() {
   console.log("======================\n");
 }
 
-// cambia el turno entre jugador X y O
+// Cambia el turno entre jugador X y O
 function cambiarTurno() {
   jugadorActual = jugadorActual === "X" ? "O" : "X";
 }
@@ -61,17 +61,17 @@ function verificarEstadoJuego() {
     if (tablero[a] === tablero[b] && tablero[b] === tablero[c]) {
       imprimirTablero();
       console.log(`\n\n¡Felicidades, ganó ${tablero[a]}!\n\n`);
-      juegoActivo = false; // y se detiene el juego
+      juegoActivo = false; // Y se detiene el juego
       return true;
     }
 
-    //revisa si todas las casillas están ocupadas (si hay empate)
+    // Revisa si todas las casillas están ocupadas (si hay empate)
     const esTableroLleno = tableroLleno();
 
     if (esTableroLleno) {
       imprimirTablero();
       console.log("\n\n ¡Es un empate!\n\n");
-      juegoActivo = false; // se detiene el juego
+      juegoActivo = false; // Se detiene el juego
       return true;
     }
   }
@@ -85,7 +85,7 @@ function tableroLleno() {
     // Si la celda todavía contiene un número (no ha sido reemplazada por "X" u "O"),
     // significa que aún quedan movimientos disponibles
     if (celda !== "X" && celda !== "O") {
-      return false; // El tablero NO está lleno
+      return false; // El tablero no está lleno
     }
   }
 
@@ -112,9 +112,9 @@ function pedirPosicionJugada() {
 
     const indice = movimiento - 1; // Convierte los valores entre 1 y 9 a índice entre 0 y 8 (indispensable para saber que casilla del tablero marcar)
 
-    // si la casilla todavia tiene el número original y es igual al número que ingresó el jugador
+    // Si la casilla todavia tiene el número original y es igual al número que ingresó el jugador
     if (tablero[indice] == movimiento) {
-      tablero[indice] = jugadorActual; // se reemplaza ese valor por "X" u "O"
+      tablero[indice] = jugadorActual; // Se reemplaza ese valor por "X" u "O"
       jugadaValida = true;
     } else {
       jugadaValida = false;
@@ -136,7 +136,7 @@ function iniciarJuego() {
       imprimirTablero();
       pedirPosicionJugada();
 
-      // si no hay ganador ni empate, cambia de turno
+      // Si no hay ganador ni empate, cambia de turno
       if (!verificarEstadoJuego()) {
         cambiarTurno();
       }
@@ -147,5 +147,4 @@ function iniciarJuego() {
   console.log("\n--- Gracias por jugar. ¡Nos vemos pronto! ---");
 }
 
- 
 iniciarJuego(); // Inicia el juego
